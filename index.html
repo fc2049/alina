@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You, Alina! 🎀</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f8a3d7, #ffccff); /* Soft Kirby-like gradient */
+            color: #000000;
+            font-family: 'Verdana', sans-serif;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Ajustando para começar do topo */
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            margin: 0;
+            width: 100%;
+        }
+
+        .snowflake {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.2); /* Aumentando a transparência */
+            font-size: 1.5em;
+            animation: fall linear infinite;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+
+        .sparkle {
+            font-size: 2em;
+            animation: sparkle 1.5s infinite alternate;
+            margin: 10px auto;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes sparkle {
+            0% { transform: scale(1); color: #ffcc00; }
+            50% { transform: scale(1.2); color: #ff6699; }
+            100% { transform: scale(1); color: #66ccff; }
+        }
+
+        .message-box {
+            background: rgba(255, 255, 255, 0.8);
+            background: linear-gradient(to right, #ffcccc, #ccffcc, #ccccff);
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            font-size: 0.9em;
+            color: #003366;
+            margin: 10px auto;
+            max-width: 90%;
+            cursor: pointer;
+            overflow: hidden;
+            transform: perspective(600px);
+            transition: height 0.3s ease, opacity 0.5s ease;
+        }
+
+        .message-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .message-box.open .message-content {
+            display: block;
+            opacity: 1;
+        }
+
+        .thank-you {
+            font-size: 1.5em;
+            color: #cc0033;
+            margin: 10px auto;
+            animation: pulse 1.5s infinite alternate;
+            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        /* Kirby Jumping Image (without jump effect) */
+        .kirby-jump {
+            position: absolute;
+            bottom: 10%;
+            width: 80px;
+        }
+
+        .kirby-star {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3em;
+            animation: star-fall 2s infinite;
+        }
+
+        @keyframes star-fall {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+
+        .footer {
+            margin-top: auto;
+            padding: 10px;
+            font-size: 0.9em;
+            color: #003366;
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Snowman */
+        .snowman {
+            position: absolute;
+            bottom: 0;
+            left: 5%; /* Movido mais para a esquerda */
+            width: 50px; /* Tamanho reduzido */
+            animation: snowman-wiggle 2s infinite;
+        }
+
+        @keyframes snowman-wiggle {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+
+        /* Prevent horizontal scrolling */
+        body, html {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Fortune Cookie Icon */
+        .fortune-cookie {
+            width: 80px;
+            height: 80px;
+            background: url('https://github.com/fc2049/alina/blob/main/1kLR.gif?raw=true') no-repeat center;
+            background-size: contain;
+            cursor: pointer;
+            margin: 20px auto;
+            transition: transform 0.2s;
+        }
+
+        .fortune-cookie:hover {
+            transform: scale(1.1);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="sparkle">🎀 Alina, Спасибо! 🎀</div> <!-- Título agora centralizado no topo -->
+
+    <div class="message-box" onclick="toggleMessage(this)">
+        Click to open the message! ✉️
+        <div class="message-content">
+            Alina, I'm so happy to have met you! 🎉<br>
+            Our English study sessions are so much fun, and I’m excited for all the things we’ll learn together! 📚<br>
+            You have such beautiful eyes—they really light up everything around you! 🌟<br>
+            I hope we can create some fun memories soon, like building a giant snowman together! ☃️<br>
+            Looking forward to more chats with you! 😊
+        </div>
+    </div>
+
+    <div class="thank-you">I hope to see you soon! 🎉</div>
+
+    <!-- Kirby Jumping Image -->
+    <div class="kirby-jump">
+        <img src="https://github.com/fc2049/alina/blob/main/kirbywalk.gif?raw=true" alt="Kirby jumping" />
+    </div>
+
+    <div class="kirby-star">
+        ✨
+    </div>
+
+    <!-- Snowman -->
+    <div class="snowman">
+        <img src="https://github.com/fc2049/alina/blob/main/stars.gif?raw=true" alt="Snowman" />
+    </div>
+
+    <!-- Fortune Cookie Icon -->
+    <div class="fortune-cookie" onclick="showFortune()"></div>
+    <div class="fortune-message" id="fortuneMessage"></div>
+
+    <script>
+        // Snowflake generation for winter effect
+        for (let i = 0; i < 50; i++) {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.innerHTML = '❄️'; // Snowflake emoji
+            snowflake.style.left = Math.random() * 100 + '%';
+            snowflake.style.animationDuration = Math.random() * 5 + 3 + 's';
+            snowflake.style.fontSize = Math.random() * 0.5 + 0.5 + 'em'; // Random size
+            document.body.appendChild(snowflake);
+        }
+
+        // Toggle message visibility
+        function toggleMessage(box) {
+            box.classList.toggle('open');
+            const content = box.querySelector('.message-content');
+            content.style.display = box.classList.contains('open') ? 'block' : 'none';
+            content.style.opacity = box.classList.contains('open') ? '1' : '0';
+        }
+
+        // Show a random fortune when the cookie is clicked
+        const fortunes = [
+ "The answer lies within you. 🌟",
+            "Soon, your creativity will blossom! 🎨",
+            "Luck is on your side today! 🍀",
+            "Patience will lead you to great things. 🕰️",
+            "A surprise is waiting for you! 🎁",
+            "Life is short, so enjoy every moment. ⏳",
+            "The stars are aligning for you tonight! ✨",
+            "Love will find you in unexpected ways. 💖",
+            "You will soon travel to a new place. ✈️",
+            "A new adventure is around the corner. 🛣️",
+            "You are closer to your dreams than you think. 🌠",
+            "Your kindness will be returned. ❤️",
+            "Do not be afraid to speak your truth. 🎤",
+            "Success is knocking at your door. 🚪",
+            "A challenge will turn into a victory. 🏆",
+            "Your hard work will pay off soon! 💪",
+            "Laughter is the best medicine. 😂",
+            "In the future, you'll find your peace. ☮️",
+            "The journey is as important as the destination. 🌍",
+            "There is always light after darkness. 🌅",
+            "Don't be afraid of the unknown. 🔮",
+            "Your curiosity will lead to something great. 🤔",
+            "A Russian winter will make you appreciate warmth. ❄️",
+            "A book will change your life forever. 📚",
+            "The art of silence will teach you wisdom. 🤫",
+                "A smile is your passport to happiness. 😊",
+    "Success is the sum of small efforts, repeated day in and day out. 💪",
+    "Beware, the heart always follows the path it desires. 💖",
+    "You will soon meet someone who will change your life forever. 🌹",
+    "Great things never come from comfort zones. 🚀",
+    "The secret to life is to find balance in the chaos. ⚖️",
+    "Life is short, but it’s wide. 🌏",
+    "You are on the right path. Keep going! 🌱",
+    "The universe has a way of guiding you towards your destiny. ✨",
+    "Sometimes, the greatest adventure is simply a conversation. 🗣️",
+    "Challenges are what make life interesting. Overcoming them is what makes life meaningful. 💡",
+    "When one door closes, another opens. 🚪",
+    "The best way to predict the future is to create it. 🛠️",
+    "You’ll be pleasantly surprised by the outcome. 😲",
+    "A new chapter of your life is just beginning. 📖",
+    "Your intuition is your greatest ally. 🧠",
+    "No act of kindness, no matter how small, is ever wasted. 🤗",
+    "The road to success is always under construction. 🏗️",
+    "Don’t wait for the perfect moment, take the moment and make it perfect. ⏳",
+    "You’re about to embark on a life-changing journey. 🌍",
+    "Doubt kills more dreams than failure ever will. 💭",
+    "In the end, everything will be okay. If it’s not okay, it’s not the end. 🌸",
+    "Even the darkest night will end, and the sun will rise. 🌞",
+    "You are stronger than you think. 💪",
+    "Good things come to those who wait… but better things come to those who don’t. ⏳",
+    "Success is not final, failure is not fatal: It’s the courage to continue that counts. 🎯",
+    "You are your only limit. 🚀",
+    "Keep your face always toward the sunshine—and shadows will fall behind you. 🌞",
+    "The more you praise and celebrate your life, the more there is in life to celebrate. 🥳",
+    "Believe in yourself and all that you are. Know that there is something inside you that is greater than any obstacle. 🧘‍♀️",
+    "The best way to predict your future is to create it. 🖌️",
+    "Fortune favors the bold. 💥",
+    "Take the risk or lose the chance. 🎲",
+    "Don’t be afraid to give up the good to go for the great. 🌟",
+    "Nothing worth having comes easy. 🏋️‍♀️",
+    "It’s not about waiting for the storm to pass, but learning how to dance in the rain. 🌧️",
+    "Every day may not be good, but there is something good in every day. ☀️",
+    "Your destiny is created by the actions you take today. 🔮",
+    "Be the energy you want to attract. ⚡",
+    "The most beautiful things in life are not things. They are people, places, memories, and pictures. 👨‍👩‍👧‍👦",
+    "A simple hello could lead to a million things. 👋",
+    "The power to change your life lies in the power of choice. 🧩",
+    "The more you give, the more you receive. 💌",
+    "Great things never come from comfort zones. 🔥",
+    "What you think, you become. 💡",
+    "Every setback is a setup for a comeback. 💥",
+    "It’s the little things in life that make the biggest impact. 🧸",
+    "Be yourself; everyone else is already taken. 💃",
+    "Don’t wait for the perfect moment. Take the moment and make it perfect. ✨",
+    "The future belongs to those who believe in their dreams. 🌙",
+    "Life is 10% what happens to us and 90% how we react to it. 🌱",
+    "You are capable of amazing things. 💖",
+    "You will find the love you seek. 💘",
+    "A person who never made a mistake never tried anything new. 🎨",
+    "The best is yet to come. 🌟",
+    "Take a leap of faith and you’ll be amazed at what happens next. 🦋",
+    "Difficult roads often lead to beautiful destinations. 🛤️",
+    "Life is a gift. Never take it for granted. 🎁",
+    "Your life will be as colorful as your dreams. 🎨",
+    "You are the author of your own story. 📚",
+    "What you seek is seeking you. 🔍",
+    "You are about to come into a period of unexpected opportunities. ✨",
+    "Dream big, work hard, stay focused. 💼",
+    "Sometimes the smallest step in the right direction ends up being the biggest step of your life. 👣",
+    "Do what you love and you’ll never work a day in your life. 🧑‍🎨",
+    "Your kindness will not go unnoticed. 🌹",
+    "A good plan today is better than a perfect plan tomorrow. 📅",
+    "Success is the sum of small efforts, repeated day in and day out. 💪",
+    "Great things are not achieved by those who wait, but by those who act. 🏃‍♂️",
+    "Your hard work will pay off soon. 🌟",
+    "You are one step closer to your goal. 🎯",
+    "Happiness is not by chance, but by choice. 🧘",
+    "Every day is a new beginning. 🌅",
+    "The best revenge is massive success. 💼",
+    "Stay focused and never give up. 💯",
+    "You are destined for great things. 🌠",
+    "The key to success is consistency. 🔑",
+    "Be a voice, not an echo. 🎤",
+    "Great things happen when you least expect them. 🌠",
+    "Embrace the glorious mess that you are. 🌀",
+    "Success is not the key to happiness. Happiness is the key to success. 🧘‍♀️",
+    "When in doubt, dance it out. 💃",
+    "Be fearless in the pursuit of what sets your soul on fire. 🔥",
+    "You’ll never know how strong you are until being strong is your only choice. 💪",
+    "What’s meant for you will always find a way. ✨",
+    "Happiness depends upon ourselves. 😊",
+    "Your vibe attracts your tribe. 💫",
+    "The best is yet to come. 🌟",
+    "Believe in the magic within you. 🧚",
+    "The harder you work for something, the greater you’ll feel when you achieve it. 🏆",
+    "Your current situation is not your final destination. 🚂",
+    "Let the beauty of what you love be what you do. 💖",
+    "Do it with passion or not at all. 💥",
+    "There’s a reason for everything. Keep going. 🔄",
+    "You will always find a way if you try hard enough. 🌻",
+    "Life’s too short to wait for opportunities, go create them. 🌟",
+    "Your life is about to get a lot better. 🧡",
+    "Life doesn’t happen to you, it happens for you. 🌱",
+    "Challenges are what make life interesting. Overcoming them is what makes life meaningful. 💡",
+    "Life is not about finding yourself, it’s about creating yourself. 🧑‍🎨",
+    "The world is full of magic things, patiently waiting for our senses to grow sharper. ✨",
+    "Great things are coming your way. Keep believing! 🌈",
+    "Your best days are ahead of you. 🌞",
+    "You are exactly where you need to be. 🛤️",
+    "The universe is always conspiring in your favor. 🌌",
+    "Your dream doesn’t have an expiration date. ⏳",
+    "The sky is not the limit; your mind is. 💭",
+    "You are destined for greatness. 🌟",
+    "This is your time to shine! 🌟",
+            "Sometimes, the deepest thoughts are the quietest. 🧠",
+            "A good laugh can be found in Dostoevsky's pages. 📖",
+            "Don't let the melancholy fool you—there's beauty in it. 🌑",
+            "Even in the darkest times, there is hope. 🌠",
+            "Push forward even when it feels like you're in a Chekhov story. 🎭",
+            "You are going to have an amazing day ahead! ✨",
+            "New opportunities are just around the corner. 🌍",
+            "Your curiosity will lead to great things! 🔍",
+            "Today is a perfect day to take the first step. 🚶‍♀️",
+            "You'll make amazing memories soon! 📸",
+            "Get ready for a fun adventure! 🎢",
+            "Good things are headed your way. 🍀",
+            "Your energy is contagious! Keep shining! 🌟",
+            "You’ll soon discover something new about yourself! 💡",
+            "The best is yet to come! 🌈",
+            "Hard work pays off, and you're on the right path! 💪",
+            "A good surprise is coming your way! 🎁",
+            "You will meet new friends who will be very important in your life. 🤝",
+            "You're more capable than you realize. Keep going! 💖",
+            "Soon, you'll find yourself exactly where you need to be. ✨",
+            "A new adventure is waiting just around the corner! 🌍"
+            
+
+        ];
+
+        function showFortune() {
+            const randomIndex = Math.floor(Math.random() * fortunes.length);
+            const fortuneMessage = document.getElementById('fortuneMessage');
+            fortuneMessage.textContent = fortunes[randomIndex];
+        }
+    </script>
+
+    <div class="footer">
+        From your Brazilian friend, Felipe 🇧🇷
+    </div>
+</body>
+</html>
